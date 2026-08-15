@@ -1,0 +1,35 @@
+# ---- IDE ----
+.vscode/
+
+# ---- STM32CubeMX 生成文件 ----
+*.mxproject
+
+# ---- Keil MDK 编译输出 ----
+*.axf
+*.bin
+*.hex
+*.map
+*.o
+*.obj
+*.crf
+*.d
+*.dep
+*.lst
+*.lnp
+*.plg
+*.iex
+*.htm
+*.bak
+*.scvd
+*.build_log.htm
+
+# ---- Keil MDK 自动生成 / 用户配置 ----
+*.uvoptx
+*.uvguix.*
+*.uvmpw
+DebugConfig/
+RTE/
+
+# ---- 系统 / 编辑器垃圾文件 ----
+.DS_Store
+Thumbs.db
