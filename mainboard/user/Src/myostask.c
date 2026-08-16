@@ -15,7 +15,7 @@ void LED_Task(void *argument){
         led_on(led_seq[i]);
         i = (i + 1) % 2U;
 
-    ledTaskStackHighWaterMark = uxTaskGetStackHighWaterMark(NULL) * sizeof(StackType_t);
-    vTaskDelayUntil(&xLastWakeTime, xFrequency);
+        ledTaskStackHighWaterMark = uxTaskGetStackHighWaterMark(NULL) * sizeof(StackType_t);
+        vTaskDelayUntil(&xLastWakeTime, xFrequency);
     }
 }

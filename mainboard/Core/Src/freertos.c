@@ -26,6 +26,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "breathing_led.h"
+#include "CAN_IRQ_Handler.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -51,6 +52,12 @@ const osThreadAttr_t BreathingTask_attributes = {
   .stack_size = 128 * 4,
   .priority = (osPriority_t) osPriorityNormal,
 };
+osThreadId_t TelemetryTaskHandle;
+const osThreadAttr_t TelemetryTask_attributes = {
+  .name = "TelemetryTask",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityNormal,
+};
 /* USER CODE END Variables */
 /* Definitions for LEDTask */
 osThreadId_t LEDTaskHandle;
@@ -63,6 +70,7 @@ const osThreadAttr_t LEDTask_attributes = {
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
 void Breathing_Task(void *argument);
+void Telemetry_Task(void *argument);
 /* USER CODE END FunctionPrototypes */
 
 void LED_Task(void *argument);
@@ -102,6 +110,7 @@ void MX_FREERTOS_Init(void) {
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
   BreathingTaskHandle = osThreadNew(Breathing_Task, NULL, &BreathingTask_attributes);
+  TelemetryTaskHandle = osThreadNew(Telemetry_Task, NULL, &TelemetryTask_attributes);
   /* USER CODE END RTOS_THREADS */
 
   /* USER CODE BEGIN RTOS_EVENTS */
@@ -135,6 +144,14 @@ void Breathing_Task(void *argument)
   for(;;){
     breathing_led();
     osDelay(1);   /* ~1ms 周期，非阻塞 */
+  }
+}
+
+void Telemetry_Task(void *argument)
+{
+  for(;;){
+    CAN_Telemetry_Send();
+    osDelay(5);   /* 200Hz 轮询标志；没新数据时函数内部直接 return */
   }
 }
 /* USER CODE END Application */

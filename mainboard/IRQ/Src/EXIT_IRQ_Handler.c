@@ -5,7 +5,7 @@ extern comprehensive_figures figures;
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
-    if (GPIO_Pin == INPUT_Pin){
+    /*if (GPIO_Pin == INPUT_Pin){
         if (figures.button.button_state){
             figures.button.button_state = OFF;
             if (time_expire(figures.button.button_timer)){
@@ -18,5 +18,5 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
             figures.button.button_timer.time_ticks = 0U;
             figures.the_beep.is_active = ACTIVE;
         }
-    }
+    }*/
 }
