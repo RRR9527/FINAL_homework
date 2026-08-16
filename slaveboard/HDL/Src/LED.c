@@ -3,8 +3,8 @@
 const LED_Config_t LED_Config[LED_NUM] = {
     {GPIOA, GPIO_PIN_4},   // LED1
     {GPIOA, GPIO_PIN_5},   // LED2
-    {GPIOA, GPIO_PIN_6},   // LED3
-    {GPIOA, GPIO_PIN_7},   // LED4
+    // {GPIOA, GPIO_PIN_6},   // LED3
+    // {GPIOA, GPIO_PIN_7},   // LED4
 };
 
 void led_on(uint8_t leds) {
