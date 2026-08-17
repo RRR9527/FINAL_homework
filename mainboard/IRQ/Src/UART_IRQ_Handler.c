@@ -6,8 +6,6 @@ uint8_t rx_buffer[100] = {0};  // 接收到的信息
 // uint8_t tx_buffer[100] = {0};  // 发送出去的信息
 volatile uint8_t is_breathing = 0U;
 volatile uint32_t breath_speed = 0U;
-extern uint8_t slave_is_breathing;
-extern uint32_t slave_breath_speed;
 
 void UART_Start_Receive(void)
 {

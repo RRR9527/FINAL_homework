@@ -32,7 +32,7 @@ void CAN_Telemetry_Send(void){
                     (float)slave_level};
 
     uint8_t tx_data[16];
-    
+
     memcpy(&tx_data[0], &f[0], 4);
     memcpy(&tx_data[4], &f[1], 4);
     memcpy(&tx_data[8], &f[2], 4);

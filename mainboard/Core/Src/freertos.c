@@ -151,7 +151,7 @@ void Telemetry_Task(void *argument)
 {
   for(;;){
     CAN_Telemetry_Send();
-    osDelay(5);   /* 200Hz 轮询标志；没新数据时函数内部直接 return */
+    osDelay(10);   /* 100Hz 轮询标志；没新数据时函数内部直接 return */
   }
 }
 /* USER CODE END Application */
